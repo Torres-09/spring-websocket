@@ -23,7 +23,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 
         Message message = Message.builder()
                 .sender(sessionId)
-                .receiver("all")
+                .channelId("all")
                 .build();
         message.newConnect();
 
@@ -43,7 +43,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
         Message msg = Utils.getObject(message.getPayload());
         msg.setSender(session.getId());
 
-        WebSocketSession receiver = sessions.get(msg.getReceiver());
+        WebSocketSession receiver = sessions.get(msg.getChannelId());
 
         if (receiver != null && receiver.isOpen()) {
             receiver.sendMessage(new TextMessage(Utils.getString(msg)));

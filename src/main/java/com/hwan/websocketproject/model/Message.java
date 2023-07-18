@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class Message {
     private String type;
     private String sender;
-    private String receiver;
+    private String channelId;
     private Object data;
 
     public void setSender(String sender) {
@@ -25,15 +25,5 @@ public class Message {
 
     public void closeConnect() {
         this.type = "close";
-    }
-
-    @Override
-    public String toString() {
-        return "Message{" +
-                "type='" + type + '\'' +
-                ", sender='" + sender + '\'' +
-                ", receiver='" + receiver + '\'' +
-                ", data=" + data +
-                '}';
     }
 }
